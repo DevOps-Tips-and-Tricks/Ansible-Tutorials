@@ -13,5 +13,5 @@ This project is open for contributions. If you have any improvements or new role
 For any questions or suggestions, you can reach me at:
 
 - Email: [milad.yarmohammadi94@gmail.com](mailto:milad.yarmohammadi94@gmail.com)
-- LinkedIn: [https://www.linkedin.com/in/milad-yarmohammadi](https://www.linkedin.com/in/milad-yarmohammadi)
-- GitHub: [https://github.com/MiladYarmohammadi](https://github.com/MiladYarmohammadi)
+- LinkedIn: [linkedin.com/in/milad-yarmohammadi](https://www.linkedin.com/in/milad-yarmohammadi)
+- GitHub: [github.com/MiladYarmohammadi](https://github.com/MiladYarmohammadi)

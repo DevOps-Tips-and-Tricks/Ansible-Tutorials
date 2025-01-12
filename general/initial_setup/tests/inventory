@@ -1,0 +1,21 @@
+[prod]
+prod-web-1 ansible_host=192.168.1.1 ansible_user=prod_user ansible_ssh_private_key_file=/path/to/prod-web-1-key
+prod-db-1 ansible_host=192.168.1.2 ansible_user=prod_user ansible_ssh_private_key_file=/path/to/prod-db-1-key
+
+[staging]
+staging-web-1 ansible_host=192.168.2.1 ansible_user=staging_user ansible_ssh_private_key_file=/path/to/staging-web-1-key
+staging-db-1 ansible_host=192.168.2.2 ansible_user=staging_user ansible_ssh_private_key_file=/path/to/staging-db-1-key
+
+[dev]
+dev-web-1 ansible_host=192.168.3.1 ansible_user=dev_user ansible_ssh_private_key_file=/path/to/dev-web-1-key
+dev-db-1 ansible_host=192.168.3.2 ansible_user=dev_user ansible_ssh_private_key_file=/path/to/dev-db-1-key
+
+[webservers:children]
+prod
+staging
+dev
+
+[dbservers:children]
+prod
+staging
+dev

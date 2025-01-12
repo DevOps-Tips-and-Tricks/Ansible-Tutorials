@@ -1,0 +1,32 @@
+---
+# tasks file for initial_setup
+
+- name: Update all packages
+  apt:
+    update_cache: "{{ update_cache | default('no') }}"
+    upgrade: "{{ upgrade_packages | default('no') }}"
+
+- name: Install necessary packages
+  apt:
+    name: "{{ packages }}"
+    state: present
+
+- name: Ensure the latest version of pip is installed
+  pip:
+    name: pip
+    state: "{{ pip_state | default('latest') }}"
+
+- name: Create a directory for the project
+  file:
+    path: "{{ project_directory }}"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: '0755'
+
+- name: Clone the project repository
+  git:
+    repo: "{{ project_repo_url }}"
+    dest: "{{ project_directory }}"
+    version: "{{ project_version | default('main') }}"
+    update: "{{ project_repo_update | default('yes') }}"

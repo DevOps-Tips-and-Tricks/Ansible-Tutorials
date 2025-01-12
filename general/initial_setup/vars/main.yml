@@ -1,0 +1,104 @@
+#SPDX-License-Identifier: MIT-0
+---
+# vars file for general/initial_setup
+
+# This file contains variable definitions for the initial setup role in Ansible.
+# These variables are used to configure various aspects of the system during the setup process.
+
+# package_list: List of packages to be installed on the system.
+# Example: 
+# package_list:
+#   - git
+#   - vim
+#   - curl
+
+# user_name: The username to be created on the system.
+# Example: user_name: "default_user"
+
+# user_home: The home directory for the created user.
+# Example: user_home: "/home/default_user"
+
+# user_shell: The default shell for the created user.
+# Example: user_shell: "/bin/bash"
+
+# timezone: The timezone to be set on the system.
+# Example: timezone: "UTC"
+
+# ntp_servers: List of NTP servers for time synchronization.
+# Example:
+# ntp_servers:
+#   - "0.pool.ntp.org"
+#   - "1.pool.ntp.org"
+
+# firewall_rules: List of firewall rules to be applied.
+# Each rule should specify the port, protocol, and action (allow/deny).
+# Example:
+# firewall_rules:
+#   - { port: 22, proto: tcp, action: allow }
+#   - { port: 80, proto: tcp, action: allow }
+
+# ssh_port: The port on which the SSH service will run.
+# Example: ssh_port: 22
+
+# ssh_permit_root_login: Whether to permit root login via SSH.
+# Example: ssh_permit_root_login: "no"
+
+# ssh_password_authentication: Whether to allow password authentication for SSH.
+# Example: ssh_password_authentication: "no"
+
+# locale: The system locale to be set.
+# Example: locale: "en_US.UTF-8"
+
+# directories_to_create: List of directories to be created on the system.
+# Example:
+# directories_to_create:
+#   - "/opt/myapp"
+#   - "/var/log/myapp"
+
+# Add more variables as needed based on your role's requirements.
+# Ensure that all variables are defined and documented clearly to facilitate easy customization and usage of the role.
+# Package list to be installed
+package_list:
+  - git
+  - vim
+  - curl
+  - htop
+  - wget
+
+# User configuration
+user_name: "default_user"
+user_home: "/home/default_user"
+user_shell: "/bin/bash"
+
+# Timezone configuration
+timezone: "UTC"
+
+# NTP servers for time synchronization
+ntp_servers:
+  - "0.pool.ntp.org"
+  - "1.pool.ntp.org"
+  - "2.pool.ntp.org"
+  - "3.pool.ntp.org"
+
+# Firewall rules configuration
+firewall_rules:
+  - { port: 22, proto: tcp, action: allow }
+  - { port: 80, proto: tcp, action: allow }
+  - { port: 443, proto: tcp, action: allow }
+  - { port: 53, proto: udp, action: allow }  # DNS
+  - { port: 123, proto: udp, action: allow } # NTP
+
+# SSH configuration
+ssh_port: 22
+ssh_permit_root_login: "no"
+ssh_password_authentication: "no"
+
+# System locale
+locale: "en_US.UTF-8"
+
+# Additional directories to create
+directories_to_create:
+  - "/opt/myapp"
+  - "/var/log/myapp"
+
+# Add more variables as needed based on your role's requirements

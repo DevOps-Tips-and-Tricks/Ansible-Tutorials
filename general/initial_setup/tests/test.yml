@@ -1,0 +1,59 @@
+---
+- name: Verify system setup
+  hosts: all
+  vars:
+    packages: []
+    user_name: ""
+    file_path: ""
+    service_name: ""
+  tasks:
+    - name: Check if packages are installed
+      ansible.builtin.package:
+        name: "{{ item }}"
+        state: present
+      register: package_result
+      changed_when: false
+      loop: "{{ packages }}"
+      when: packages | length > 0
+
+    - name: Assert packages are installed
+      ansible.builtin.assert:
+        that:
+          - package_result.results | map(attribute='state') | list == ['present'] * length(packages)
+      when: packages | length > 0
+
+    - name: Check if user exists
+      ansible.builtin.user:
+        name: "{{ user_name }}"
+        state: present
+      register: user_result
+      changed_when: false
+      when: user_name != ""
+
+    - name: Assert user exists
+      ansible.builtin.assert:
+        that:
+          - user_result is succeeded
+      when: user_name != ""
+
+    - name: Check if file exists
+      ansible.builtin.stat:
+        path: "{{ file_path }}"
+      register: file_result
+      when: file_path != ""
+
+    - name: Assert file exists
+      ansible.builtin.assert:
+        that:
+          - file_result.stat.exists
+      when: file_path != ""
+
+    - name: Check if service is running
+      ansible.builtin.service_facts:
+      when: service_name != ""
+
+    - name: Assert service is running
+      ansible.builtin.assert:
+        that:
+          - ansible_facts.services[service_name].state == 'running'
+      when: service_name != ""

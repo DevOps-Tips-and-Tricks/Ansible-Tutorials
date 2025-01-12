@@ -1,0 +1,12 @@
+# Default values for initial setup
+initial_setup_user: "devops"
+initial_setup_group: "devops"
+initial_setup_home: "/home/devops"
+initial_setup_shell: "/bin/bash"
+initial_setup_packages:
+  - "git"
+  - "curl"
+  - "vim"
+initial_setup_timezone: "UTC"
+initial_setup_locale: "en_US.UTF-8"
+initial_setup_ssh_key: ""

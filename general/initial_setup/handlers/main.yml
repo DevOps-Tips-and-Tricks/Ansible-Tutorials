@@ -1,0 +1,11 @@
+---
+# handlers/main.yml
+
+- name: restart services
+  service:
+    name: "{{ item }}"
+    state: restarted
+  with_items: "{{ services_to_restart }}"
+
+- name: reload systemd
+  command: systemctl daemon-reload
